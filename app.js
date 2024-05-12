@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
 var cors = require('cors')
+require("dotenv").config();
 
 const authRoutes = require("./src/routes/auth.route");
 const userRoutes = require("./src/routes/user.route");
@@ -19,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 
-mongoose.connect("mongodb+srv://trungbmt:qniuosqy3muyX1nn@cluster0.nspaq.mongodb.net/jobTest", {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
